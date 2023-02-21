@@ -4,7 +4,7 @@ import Product from './Product/Product'
 import UseStyles from './styles'
 
 
-const Products = ({products, onAddToCart}) => {
+const Products = ({ products, onAddToCart }) => {
   const classes = UseStyles()
   return (
     <main className={classes.content}>

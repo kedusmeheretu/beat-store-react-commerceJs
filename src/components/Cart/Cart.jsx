@@ -3,14 +3,12 @@ import {Container, Typography, Button, Grid} from '@material-ui/core'
 import UseStyles from './styles'
 import CartItem from './CartItem/CartItem';
 import {Link} from 'react-router-dom'
-const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) => {
+const Cart = ({ cart, totalItems, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) => {
 
   const classes = UseStyles();
 
-  const isEmpty = !cart.total_items;
-
-  console.log(isEmpty)
-
+  const isEmpty = !totalItems;
+  
   const EmptyCart = () => (
     <Typography variant="subtitle1"> You have no items in your cart,
     <Link to="/" className={classes.link}> start adding some</Link>!
@@ -36,6 +34,8 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     </>
   )
 
+  console.log(isEmpty)
+          
   if (!cart.line_items) return "Loading..."
 
   return (

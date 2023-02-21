@@ -19,10 +19,11 @@ const fetchCart = async () => {
   setCart(await commerce.cart.retrieve())
 }
 
-const handleAddToCart = async (productId) => {
-  const {cart} = await commerce.cart.add(productId)
+const handleAddToCart = async (productId, quantity) => {
+  const {cart} = await commerce.cart.add(productId, quantity)
 
-  setCart(cart)
+  setCart(cart) 
+  console.log(cart) 
 }
 
 const handleUpdateCartQty = async (productId) => {
@@ -48,7 +49,7 @@ useEffect(() => {
   fetchCart();
 }, [])
 
-console.log(cart.total_items)
+console.log(cart)
 
 
 
@@ -57,10 +58,10 @@ console.log(cart.total_items)
   return (
     <Router>
         <div>
-        <Navbar totalItems={cart.total_items}/>
+        <Navbar totalItems={cart ? cart.total_items : 0}/>
         <Routes>
           <Route exact path='/' element={<Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty/>}/>
-          <Route exact path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart}  />}/>
+          <Route exact path='/cart' element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} totalItems={cart ? cart.total_items : 0}/>}/>
         </Routes>
         </div>
     </Router>
