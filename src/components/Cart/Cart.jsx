@@ -36,7 +36,7 @@ const Cart = ({ cart, totalItems, handleUpdateCartQty, handleRemoveFromCart, han
 
   console.log(isEmpty)
           
-  if (!cart.line_items) return "Loading..."
+  if (cart && !cart.line_items) return "Loading..."
 
   return (
     <Container>

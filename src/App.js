@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 // import Navbar from './components/Navbar/Navbar'
 import { commerce } from './components/lib/commerce'
 import { Products, Navbar, Cart } from './components'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -19,11 +19,8 @@ const fetchCart = async () => {
   setCart(await commerce.cart.retrieve())
 }
 
-const handleAddToCart = async (productId, quantity) => {
-  const {cart} = await commerce.cart.add(productId, quantity)
-
-  setCart(cart) 
-  console.log(cart) 
+const handleAddToCart = (productId, quantity) => {
+  commerce.cart.add(productId, quantity).then((response) => setCart(response));
 }
 
 const handleUpdateCartQty = async (productId) => {
