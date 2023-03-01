@@ -15,7 +15,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   
   const methods = useForm();
 
-  // console.log(checkoutToken.live.line_items)
+  console.log(checkoutToken.live.line_items)
 
   // const fetchShippingCountries = async (checkoutTokenId) => {
   //   const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
